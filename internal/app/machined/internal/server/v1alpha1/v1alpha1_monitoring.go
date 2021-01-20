@@ -19,7 +19,7 @@ import (
 
 // Hostname implements the machine.MachineServer interface.
 func (s *Server) Hostname(ctx context.Context, in *empty.Empty) (*machine.HostnameResponse, error) {
-	hostname, err := os.Hostname()
+	hostname, err := s.Controller.Runtime().NodeName()
 	if err != nil {
 		return nil, err
 	}

@@ -1200,9 +1200,9 @@ func UnmountSystemDiskBindMounts(seq runtime.Sequence, data interface{}) (runtim
 //nolint: dupl
 func CordonAndDrainNode(seq runtime.Sequence, data interface{}) (runtime.TaskExecutionFunc, string) {
 	return func(ctx context.Context, logger *log.Logger, r runtime.Runtime) (err error) {
-		var hostname string
+		var nodename string
 
-		if hostname, err = os.Hostname(); err != nil {
+		if nodename, err = r.NodeName(); err != nil {
 			return err
 		}
 
@@ -1212,7 +1212,7 @@ func CordonAndDrainNode(seq runtime.Sequence, data interface{}) (runtime.TaskExe
 			return err
 		}
 
-		if err = kubeHelper.CordonAndDrain(hostname); err != nil {
+		if err = kubeHelper.CordonAndDrain(nodename); err != nil {
 			return err
 		}
 
@@ -1227,9 +1227,9 @@ func CordonAndDrainNode(seq runtime.Sequence, data interface{}) (runtime.TaskExe
 //nolint: dupl
 func UncordonNode(seq runtime.Sequence, data interface{}) (runtime.TaskExecutionFunc, string) {
 	return func(ctx context.Context, logger *log.Logger, r runtime.Runtime) (err error) {
-		var hostname string
+		var nodename string
 
-		if hostname, err = os.Hostname(); err != nil {
+		if nodename, err = r.NodeName(); err != nil {
 			return err
 		}
 
@@ -1239,11 +1239,11 @@ func UncordonNode(seq runtime.Sequence, data interface{}) (runtime.TaskExecution
 			return err
 		}
 
-		if err = kubeHelper.WaitUntilReady(hostname); err != nil {
+		if err = kubeHelper.WaitUntilReady(string(nodename)); err != nil {
 			return err
 		}
 
-		if err = kubeHelper.Uncordon(hostname, false); err != nil {
+		if err = kubeHelper.Uncordon(string(nodename), false); err != nil {
 			return err
 		}
 
@@ -1451,13 +1451,14 @@ func LabelNodeAsMaster(seq runtime.Sequence, data interface{}) (runtime.TaskExec
 			return err
 		}
 
-		hostname, err := os.Hostname()
-		if err != nil {
+		var nodename string
+
+		if nodename, err = r.NodeName(); err != nil {
 			return err
 		}
 
 		err = retry.Constant(constants.NodeReadyTimeout, retry.WithUnits(3*time.Second), retry.WithErrorLogging(true)).Retry(func() error {
-			if err = h.LabelNodeAsMaster(hostname, !r.Config().Cluster().ScheduleOnMasters()); err != nil {
+			if err = h.LabelNodeAsMaster(string(nodename), !r.Config().Cluster().ScheduleOnMasters()); err != nil {
 				return retry.ExpectedError(err)
 			}
 
