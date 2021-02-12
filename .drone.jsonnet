@@ -436,7 +436,7 @@ local e2e_gcp = Step("e2e-gcp", depends_on=[e2e_capi], environment=creds_env_var
 
 local e2e_steps = default_steps + [
   e2e_capi,
-  e2e_aws,
+  //e2e_aws,
   e2e_gcp,
 ];
 
