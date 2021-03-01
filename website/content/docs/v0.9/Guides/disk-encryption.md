@@ -3,31 +3,31 @@ title: "Disk Encryption"
 description: "Guide on using system disk encryption"
 ---
 
-It is possible to enable system disk partitions encryption on the OS level.
-Only STATE and EPHEMERAL partitions can be encrypted at the moment.
+It is possible to enable encryption for system disks at the OS level.
+As of this writing, only STATE and EPHEMERAL partitions can be encrypted.
 STATE contains the most sensitive node data: secrets and certs.
-EPHEMERAL partition can contain some sensitive workload data.
-
+EPHEMERAL partition may contain some sensitive workload data.
 Data is encrypted using LUKS2, which is provided by the Linux kernel modules and `cryptsetup` utility.
+The operating system will run additional setup steps when encryption is enabled.
 
-System runs additional steps when encryption is enabled.
 If the disk encryption is enabled for the STATE partition, the system will:
 
-- save STATE encryption config as JSON in the META partition.
-- before mounting the STATE partition, load encryption configs either from the machine config or from the META partition,
-  the machine config is always preferred over the META one.
-- before mounting the STATE partition, format and encrypt it, but only if it is empty and has no filesystem.
+- Save STATE encryption config as JSON in the META partition.
+- Before mounting the STATE partition, load encryption configs either from the machine config or from the META partition.
+  Note that the machine config is always preferred over the META one.
+- Before mounting the STATE partition, format and encrypt it.
+  This occurs only if the STATE partition is empty and has no filesystem.
 
 If the disk encryption is enabled for the EPHEMERAL partition, the system will:
 
-- get the encryption config from the machine config.
-- before mounting the EPHEMERAL partition, encrypt and format it, but only if it is empty and has not filesystem.
+- Get the encryption config from the machine config.
+- Before mounting the EPHEMERAL partition, encrypt and format it.
+  This occurs only if the EPHEMERAL partition is empty and has no filesystem.
 
 ## Configuration
 
-Right now system partitions encryption is disabled by default.
-To enable disk encryption you should modify the machine configuration.
-The machine config has the appropriate sections for STATE and EPHEMERAL partitions:
+Right now this encryption is disabled by default.
+To enable disk encryption you should modify the machine configuration with the following options:
 
 ```yaml
 machine:
@@ -45,7 +45,7 @@ machine:
 
 ### Encryption Keys
 
-> Note: LUKS2 docs calls that keys, but in reality it is a passphrase.
+> Note: What the LUKS2 docs call "keys" are, in reality, a passphrase.
 > When this passphrase is added, LUKS2 runs argon2 to create an actual key from that passphrase.
 
 LUKS2 supports up to 32 encryption keys and it is possible to specify all of them in the machine configuration.
@@ -69,12 +69,12 @@ machine:
         keySlot: 0
 ```
 
-Take a note that keys order does not play any role on which key slot is used.
+Take a note that key order does not play any role on which key slot is used.
 Every key must always have a slot defined.
 
 ### Encryption Key Kinds
 
-Talos supports two kinds of keys for now:
+Talos supports two kinds of keys:
 
 - `nodeID` which is generated using the node UUID and the partition label (note that if the node UUID is not really random it will fail the entropy check).
 - `static` which you define right in the configuration.
@@ -84,8 +84,7 @@ Talos supports two kinds of keys for now:
 
 ### Key Rotation
 
-It is necessary to do `talosctl apply-config` couple of times to rotate the keys.
-The idea is to always keep using at least a single working key and change everything around it.
+It is necessary to do `talosctl apply-config` a couple of times to rotate keys, since there is a need to always maintain a single working key while changing the other keys around it.
 
 So, for example, first add a new key:
 
@@ -132,14 +131,12 @@ talosctl apply-config -n <node> -f config.yaml
 
 ### Ephemeral Partition
 
-There is none in place encryption support for the partitions right now, so to avoid losing any data
-only the empty partitions can be encrypted.
-So the key is the explicit wipe call.
+There is no in-place encryption support for the partitions right now, so to avoid losing any data only empty partitions can be encrypted.
 
-That's why migration from unencrypted to encrypted needs some additional handling, which is:
+As such, migration from unencrypted to encrypted needs some additional handling, especially around explicitly wiping partitions.
 
 - `apply-config` should be called with `--on-reboot` flag.
-- partition should be wiped after `apply-config`, but before the reboot.
+- Partition should be wiped after `apply-config`, but before the reboot.
 
 Edit your machine config and add the encryption configuration:
 
@@ -159,7 +156,8 @@ Wipe the partition you're going to encrypt:
 talosctl reset --system-labels-to-wipe EPHEMERAL -n <none> --reboot=true
 ```
 
-That's it, after you run the last command, the partition will be wiped and the node will reboot.
+That's it!
+After you run the last command, the partition will be wiped and the node will reboot.
 During the next boot the system will encrypt the partition.
 
 ### State Partition
