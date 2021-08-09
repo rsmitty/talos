@@ -15,7 +15,6 @@ require (
 	github.com/dustin/go-humanize v1.0.0
 	github.com/evanphx/json-patch v4.11.0+incompatible
 	github.com/ghodss/yaml v1.0.0
-	github.com/golang/protobuf v1.5.2
 	github.com/hashicorp/go-multierror v1.1.1
 	github.com/jsimonetti/rtnetlink v0.0.0-20210614053835-9c52e516c709
 	github.com/mdlayher/ethtool v0.0.0-20210210192532-2b88debcdd43
@@ -24,7 +23,7 @@ require (
 	github.com/stretchr/objx v0.3.0 // indirect
 	github.com/stretchr/testify v1.7.0
 	github.com/talos-systems/crypto v0.3.2-0.20210707205149-deec8d47700e
-	github.com/talos-systems/go-blockdevice v0.2.1
+	github.com/talos-systems/go-blockdevice v0.2.3
 	github.com/talos-systems/net v0.3.0
 	golang.org/x/sys v0.0.0-20210630005230-0f9fa26af87c
 	google.golang.org/genproto v0.0.0-20210701191553-46259e63a0a9
