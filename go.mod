@@ -72,7 +72,7 @@ require (
 	github.com/smira/go-xz v0.0.0-20201019130106-9921ed7a9935
 	github.com/spf13/cobra v1.2.1
 	github.com/stretchr/testify v1.7.0
-	github.com/talos-systems/crypto v0.3.2
+	github.com/talos-systems/crypto v0.3.4
 	github.com/talos-systems/discovery-service v0.0.3-0.20210929192103-b2e2079088a5
 	github.com/talos-systems/go-blockdevice v0.2.4-0.20210925062844-70d28650b398
 	github.com/talos-systems/go-cmd v0.1.0
