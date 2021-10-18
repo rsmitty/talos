@@ -87,7 +87,7 @@ require (
 	github.com/talos-systems/talos/pkg/machinery v0.0.0-00010101000000-000000000000
 	github.com/u-root/u-root v7.0.0+incompatible
 	github.com/vishvananda/netlink v1.1.1-0.20210330154013-f5de75959ad5
-	github.com/vmware-tanzu/sonobuoy v0.53.2
+	github.com/vmware-tanzu/sonobuoy v0.54.0
 	github.com/vmware/govmomi v0.26.1
 	github.com/vmware/vmw-guestinfo v0.0.0-20200218095840-687661b8bd8e
 	github.com/vultr/metadata v1.0.3
