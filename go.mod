@@ -112,7 +112,7 @@ require (
 	k8s.io/apimachinery v0.22.2
 	k8s.io/apiserver v0.22.2 // indirect; use the same version as other k8s deps
 	k8s.io/client-go v0.22.2
-	k8s.io/cri-api v0.22.2
+	k8s.io/cri-api v0.22.3
 	k8s.io/kubectl v0.22.2
 	k8s.io/kubelet v0.22.2
 	kernel.org/pub/linux/libs/security/libcap/cap v1.2.59
