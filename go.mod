@@ -60,7 +60,7 @@ require (
 	github.com/grpc-ecosystem/go-grpc-middleware v1.3.0
 	github.com/hashicorp/go-getter v1.5.9
 	github.com/hashicorp/go-multierror v1.1.1
-	github.com/hetznercloud/hcloud-go v1.32.0
+	github.com/hetznercloud/hcloud-go v1.33.0
 	github.com/insomniacslk/dhcp v0.0.0-20211026125128-ad197bcd36fd
 	github.com/jsimonetti/rtnetlink v0.0.0-20211022192332-93da33804786
 	github.com/jxskiss/base62 v1.0.0
@@ -115,7 +115,6 @@ require (
 	google.golang.org/grpc v1.42.0
 	google.golang.org/protobuf v1.27.1
 	gopkg.in/freddierice/go-losetup.v1 v1.0.0-20170407175016-fc9adea44124
-	gopkg.in/yaml.v2 v2.4.0
 	gopkg.in/yaml.v3 v3.0.0-20210107192922-496545a6307b
 	inet.af/netaddr v0.0.0-20211027220019-c74959edd3b6
 	kernel.org/pub/linux/libs/security/libcap/cap v1.2.60
@@ -285,6 +284,7 @@ require (
 	google.golang.org/genproto v0.0.0-20211104193956-4c6863e31247 // indirect
 	gopkg.in/inf.v0 v0.9.1 // indirect
 	gopkg.in/ini.v1 v1.62.0 // indirect
+	gopkg.in/yaml.v2 v2.4.0 // indirect
 	honnef.co/go/tools v0.2.1 // indirect
 	inet.af/tcpproxy v0.0.0-20200125044825-b6bb9b5b8252 // indirect
 	k8s.io/klog v1.0.0 // indirect
