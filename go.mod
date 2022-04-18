@@ -65,7 +65,7 @@ require (
 	github.com/hashicorp/go-version v1.4.0
 	github.com/hetznercloud/hcloud-go v1.33.1
 	github.com/insomniacslk/dhcp v0.0.0-20220119180841-3c283ff8b7dd
-	github.com/jsimonetti/rtnetlink v1.1.1
+	github.com/jsimonetti/rtnetlink v1.2.0
 	github.com/jxskiss/base62 v1.1.0
 	github.com/mattn/go-isatty v0.0.14
 	github.com/mdlayher/arp v0.0.0-20220221190821-c37aaafac7f9
@@ -115,7 +115,7 @@ require (
 	go.uber.org/zap v1.21.0
 	golang.org/x/net v0.0.0-20220403103023-749bd193bc2b
 	golang.org/x/sync v0.0.0-20210220032951-036812b2e83c
-	golang.org/x/sys v0.0.0-20220403205710-6acee93ad0eb
+	golang.org/x/sys v0.0.0-20220408201424-a24fb2fb8a0f
 	golang.org/x/term v0.0.0-20210927222741-03fcf44c2211
 	golang.org/x/time v0.0.0-20220224211638-0e9765cccd65
 	golang.zx2c4.com/wireguard/wgctrl v0.0.0-20220330030906-9490840b0b01
