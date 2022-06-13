@@ -89,7 +89,7 @@ require (
 	github.com/siderolabs/go-pointer v1.0.0
 	github.com/spf13/cobra v1.4.0
 	github.com/spf13/pflag v1.0.5
-	github.com/stretchr/testify v1.7.1
+	github.com/stretchr/testify v1.7.2
 	github.com/talos-systems/crypto v0.3.5
 	github.com/talos-systems/discovery-api v0.1.0
 	github.com/talos-systems/discovery-client v0.1.0
@@ -126,7 +126,7 @@ require (
 	google.golang.org/grpc v1.46.2
 	google.golang.org/protobuf v1.28.0
 	gopkg.in/freddierice/go-losetup.v1 v1.0.0-20170407175016-fc9adea44124
-	gopkg.in/yaml.v3 v3.0.0-20210107192922-496545a6307b
+	gopkg.in/yaml.v3 v3.0.1
 	inet.af/netaddr v0.0.0-20211027220019-c74959edd3b6
 	k8s.io/klog/v2 v2.60.1
 	kernel.org/pub/linux/libs/security/libcap/cap v1.2.64
