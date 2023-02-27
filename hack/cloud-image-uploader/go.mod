@@ -7,7 +7,7 @@ require (
 	github.com/google/uuid v1.3.0
 	github.com/spf13/pflag v1.0.5
 	github.com/talos-systems/go-retry v0.3.1
-	golang.org/x/sync v0.0.0-20220601150217-0de741cfad7f
+	golang.org/x/sync v0.1.0
 )
 
 require github.com/jmespath/go-jmespath v0.4.0 // indirect
