@@ -3,7 +3,7 @@ module github.com/talos-systems/cloud-image-uploader
 go 1.19
 
 require (
-	github.com/aws/aws-sdk-go v1.44.91
+	github.com/aws/aws-sdk-go v1.44.212
 	github.com/google/uuid v1.3.0
 	github.com/spf13/pflag v1.0.5
 	github.com/talos-systems/go-retry v0.3.1
@@ -13,6 +13,5 @@ require (
 require (
 	github.com/davecgh/go-spew v1.1.1 // indirect
 	github.com/jmespath/go-jmespath v0.4.0 // indirect
-	golang.org/x/net v0.0.0-20220826154423-83b083e8dc8b // indirect
 	gopkg.in/yaml.v2 v2.4.0 // indirect
 )
