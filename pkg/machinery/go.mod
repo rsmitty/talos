@@ -7,7 +7,7 @@ go 1.19
 replace gopkg.in/yaml.v3 => github.com/unix4ever/yaml v0.0.0-20220527175918-f17b0f05cf2c
 
 require (
-	github.com/containerd/go-cni v1.1.7
+	github.com/containerd/go-cni v1.1.9
 	github.com/cosi-project/runtime v0.2.0-alpha.0
 	github.com/dustin/go-humanize v1.0.0
 	github.com/evanphx/json-patch v5.6.0+incompatible
